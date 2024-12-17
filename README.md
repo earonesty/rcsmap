@@ -14,7 +14,7 @@
 
    This encoding is polynomial in the size of the SAT instance. Although detailed engineering might be needed, the principle is that each clause can be checked using a polynomial (or at worst, exponential but structured) number of gates—still far less than any brute-force search by classical means for large instances.
 
-   Example code can be found in [reform.py]
+   Example code can be found in [reform.py](reform.py).
 
 3. **Leveraging Willow**  
    Now we feed the constructed circuit \(Q_\phi\) into Willow. By assumption, Willow can handle RCS tasks quickly and accurately. It executes the circuit and produces measurement outcomes according to the encoded distribution.
