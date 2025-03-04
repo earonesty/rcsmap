@@ -1,4 +1,4 @@
-# RCS-SAT Mapping
+# Quantum RCS-SAT Mapping
 
 This repository provides a method to encode SAT problems into quantum circuits using Random Circuit Sampling (RCS). The goal is to explore whether RCS-capable quantum processors can provide computational advantages in solving SAT instances.
 
