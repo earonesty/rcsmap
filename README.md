@@ -10,7 +10,7 @@ The approach involves:
 - Using RCS to generate output samples
 - Extracting satisfying assignments from sampled output
 
-## How the Output is Interpreted
+## Explanation of the rcsmap.py program:
 
 1. **Mapping SAT Variables to Qubits**  
    Each SAT variable is associated with a specific qubit in the quantum circuit. The state of each qubit represents the truth assignment of the corresponding SAT variable.
@@ -29,7 +29,7 @@ The approach involves:
 
 This approach investigates whether quantum sampling techniques can enhance classical SAT-solving methods by efficiently exploring the solution space. Future work includes benchmarking against classical solvers and testing on real quantum hardware.
 
-**Assuming Quantum Computers Efficiently Handle RCS**
+# Assuming Quantum Computers Efficiently Handle RCS
 
 1. **Premise: Quanum Computing Capabilities**  
     There are many uantum devices that can sample from the output distributions of complex random quantum circuits (RCS instances) both accurately and efficiently. “Efficiently” here means it can handle RCS instances of a size and complexity that would be classically intractable, and it can do so in time scales that render previously unsolvable problems feasible.
