@@ -1,3 +1,34 @@
+# RCS-SAT Mapping
+
+This repository provides a method to encode SAT problems into quantum circuits using Random Circuit Sampling (RCS). The goal is to explore whether RCS-capable quantum processors can provide computational advantages in solving SAT instances.
+
+## Overview
+
+The approach involves:
+- Mapping SAT variables to qubits
+- Encoding clauses as quantum gate operations
+- Using RCS to generate output samples
+- Extracting satisfying assignments from sampled output
+
+## How the Output is Interpreted
+
+1. **Mapping SAT Variables to Qubits**  
+   Each SAT variable is associated with a specific qubit in the quantum circuit. The state of each qubit represents the truth assignment of the corresponding SAT variable.
+
+2. **Constructing the Quantum Circuit**  
+   Each clause of the SAT problem is translated into a series of quantum gates. These gates enforce constraints on the state space such that satisfying assignments correspond to valid quantum states.
+
+3. **Measuring the Quantum State**  
+   After executing the circuit, the qubits are measured, yielding a classical bitstring. Each bit in the output represents a truth assignment.
+
+4. **Interpreting the Measurement Results**  
+   The sampled bitstrings are analyzed to check if they satisfy all SAT clauses. The process is repeated multiple times to improve the probability of obtaining a satisfying assignment.
+
+5. **Repeating the Process**  
+   Due to the probabilistic nature of quantum measurements, multiple samples are taken to ensure a valid solution emerges with high probability.
+
+This approach investigates whether quantum sampling techniques can enhance classical SAT-solving methods by efficiently exploring the solution space. Future work includes benchmarking against classical solvers and testing on real quantum hardware.
+
 **Assuming Quantum Computers Efficiently Handle RCS**
 
 1. **Premise: Quanum Computing Capabilities**  
@@ -18,17 +49,17 @@
 
    Example code can be found in [reform.py](reform.py).
 
-3. **Leveraging RCS**  
+4. **Leveraging RCS**  
    Now we feed the constructed circuit \(Q_\phi\) into an RCS device.  The RCS device executes the circuit and produces measurement outcomes according to the encoded distribution.
 
    Because \(Q_\phi\) is constructed so that correct SAT solutions appear with higher probability than random guessing would yield, just a moderate number of samples from the RCS device should generate at least one satisfying assignment with a probability well above chance. If an RCS device can truly handle such circuits at scale, this step is tractable for large instances that would stymie classical algorithms.
 
-4. **Extracting the SAT Solution**  
+5. **Extracting the SAT Solution**  
    After running \(Q_\phi\) on an RCS device, we analyze the collected measurement outcomes. We look for assignments that occur more frequently than one would expect from a uniform distribution. Among these more frequent assignments, at least one is highly likely to satisfy \(\phi\). Thus, we “read off” a correct SAT solution directly from the measurement data.
 
    The code demonstrates this is possible for random satisfiability problems.
 
-5. **Implication**  
+6. **Implication**  
    The argument doesn’t rely on any known polynomial-time classical algorithm. Instead, it exploits RCS device’s assumed ability to solve large RCS instances efficiently. By showing that a generic SAT problem can be mapped to an RCS instance and then solved via RCS sampling, we conclude: If RCS devices truly provide fast, accurate solutions at scale, then it can be used to solve SAT problems that are otherwise intractable.
 
    This is a practical and functional demonstration that the existence of a powerful RCS-solving device can be leveraged to solve SAT. SAT problems have become “quantum solved” through RCS.
